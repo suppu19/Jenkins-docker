@@ -11,18 +11,20 @@ pipeline{
         stage('Logging into AWS ECR'){
             steps{
                  sh "aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 492840825928.dkr.ecr.ap-south-1.amazonaws.com"
+            }
+        }     
         stage("Build the docker image"){
             steps{
                  sh "docker build -t ${IMAGE_REPO_NAME} ."
                  sh "docker tag niznix-ecr:latest 492840825928.dkr.ecr.ap-south-1.amazonaws.com/niznix-ecr:latest"
                  sh "docker push 492840825928.dkr.ecr.ap-south-1.amazonaws.com/niznix-ecr:latest"
-                }
+             }
 
-            }
+        }
                  
-        }     
+     }     
 
-     }
-    }
 }
+    
+
         
