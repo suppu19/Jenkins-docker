@@ -17,7 +17,7 @@ pipeline{
             steps{
                  sh "docker build -t ${IMAGE_REPO_NAME} ."
                  sh "docker tag niznix-ecr:latest 492840825928.dkr.ecr.ap-south-1.amazonaws.com/niznix-ecr:latest"
-                 sh "docker push 492840825928.dkr.ecr.ap-south-1.amazonaws.com/niznix-ecr:latest"
+                 sh "docker  492840825928.dkr.ecr.ap-south-1.amazonaws.com/niznix-ecr:latest"
              }
             post {
                 success {
