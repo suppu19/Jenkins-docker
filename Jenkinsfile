@@ -21,10 +21,10 @@ pipeline{
              }
             post {
                 success {
-                    slackSend color: 'good',channel: '#jenkins-intigration', message: 'succesfully complited ecr : ${BUILD_NUMBER}', tokenCredentialId: 'slacklogin'
+                    slackSend color: 'good',channel: '#jenkins-intigration', message: "succesfully complited ecr : ${BUILD_NUMBER}", tokenCredentialId: 'slacklogin'
                     }            
                 failure {
-                    slackSend color: 'danger',channel: '#jenkins-intigration', message: 'failed the build : ${BUILD_NUMBER}', tokenCredentialId: 'slacklogin'
+                    slackSend color: 'danger',channel: '#jenkins-intigration', message: "failed the build : ${BUILD_NUMBER}", tokenCredentialId: 'slacklogin'
                     }            
             }
         }
