@@ -17,14 +17,14 @@ pipeline{
             steps{
                  sh "docker build -t ${IMAGE_REPO_NAME} ."
                  sh "docker tag niznix-ecr:latest 492840825928.dkr.ecr.ap-south-1.amazonaws.com/niznix-ecr:latest"
-                 sh "docker  492840825928.dkr.ecr.ap-south-1.amazonaws.com/niznix-ecr:latest"
+                 sh "docker push 492840825928.dkr.ecr.ap-south-1.amazonaws.com/niznix-ecr:latest"
              }
             post {
                 success {
-                    slackSend color: 'good',channel: '#jenkins-intigration', message: 'succesfully complited ecr', tokenCredentialId: 'slacklogin'
+                    slackSend color: 'good',channel: '#jenkins-intigration', message: 'succesfully complited ecr  Build N°: ${env.BUILD_NUMBER}', tokenCredentialId: 'slacklogin'
                     }            
                 failure {
-                    slackSend color: 'danger',channel: '#jenkins-intigration', message: 'failed the build', tokenCredentialId: 'slacklogin'
+                    slackSend color: 'danger',channel: '#jenkins-intigration', message: 'failed the build  Build N°: ${env.BUILD_NUMBER}', tokenCredentialId: 'slacklogin'
                     }            
             }
         }
