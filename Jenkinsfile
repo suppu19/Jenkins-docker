@@ -19,11 +19,16 @@ pipeline{
                  sh "docker tag niznix-ecr:latest 492840825928.dkr.ecr.ap-south-1.amazonaws.com/niznix-ecr:latest"
                  sh "docker push 492840825928.dkr.ecr.ap-south-1.amazonaws.com/niznix-ecr:latest"
              }
-
+            post {
+                success {
+                    slackSend color: 'good',channel: '#jenkins-intigration', message: 'succesfully complited ecr', tokenCredentialId: 'slacklogin'
+                    }            
+                failure {
+                    slackSend color: 'danger',channel: '#jenkins-intigration', message: 'failed the build', tokenCredentialId: 'slacklogin'
+                    }            
+            }
         }
-                 
-     }     
-
+    }
 }
     
 
