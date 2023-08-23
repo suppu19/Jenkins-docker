@@ -18,7 +18,7 @@ pipeline{
                  sh "docker build -t ${IMAGE_REPO_NAME} ."
                  sh "docker tag niznix-ecr:latest 492840825928.dkr.ecr.ap-south-1.amazonaws.com/niznix-ecr:latest"
                  sh "docker push 492840825928.dkr.ecr.ap-south-1.amazonaws.com/niznix-ecr:latest"
-                 sh "docker run -d -p ${BUILD_NUMBER}:80  --log-driver=awslogs --log-opt awslogs --log-opt awslogs-region=ap-south-1  --log-opt awslogs-group=dockerlogs niznix-ecr:latest"
+                 sh "docker run -d -p ${BUILD_NUMBER}:80  --log-driver=awslogs --log-opt awslogs-region=ap-south-1  --log-opt awslogs-group=dockerlogs niznix-ecr:latest"
                // sh "docker run -d -p 3000:3000 --name vamsi-Adi-practice --log-driver=awslogs --log-opt awslogs-region=us-east-1 --log-opt awslogs-group=practice public.ecr.aws/g8i9m6o6/learning111:latest"
              }
 
