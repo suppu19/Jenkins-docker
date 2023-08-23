@@ -18,7 +18,8 @@ pipeline{
                  sh "docker build -t ${IMAGE_REPO_NAME} ."
                  sh "docker tag niznix-ecr:latest 492840825928.dkr.ecr.ap-south-1.amazonaws.com/niznix-ecr:latest"
                  sh "docker push 492840825928.dkr.ecr.ap-south-1.amazonaws.com/niznix-ecr:latest"
-                 sh "docker run -d --log-driver=awslogs --log-opt awslogs-group=dockerlogs --log-opt awslogs-region=us-east-1 --log-opt awslogs-stream=my-log-stream --log-opt awslogs-create-group=true niznix-ecr:latest"
+                 sh "docker run -d -p 80:80  --log-driver=awslogs --log-opt awslogs-group=dockerlogs --log-opt awslogs-region=us-east-1  --log-opt awslogs-create-group=true niznix-ecr:latest"
+
              }
 
             post {
