@@ -1,0 +1,19 @@
+node {
+    stage ('Git-Checkout') {
+             git branch: 'main',
+                credentialsId: 'github-token',
+                url: 'https://github.com/suppu19/Jenkins-mvn-sonar.git'
+                
+            }
+    stage ('Maven-build') {
+                
+            sh 'mvn clean package'
+            
+        }        
+    stage ('build docker image'){
+       sh 'docker build -t warfile:3.0 .'
+       sh 'docker run -itd --name  con1 -p 8080:8080 warfile:3.0 ' 
+         }
+   }
+   
+           
